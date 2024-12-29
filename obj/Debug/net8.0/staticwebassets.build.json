@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "QFcyksWUDgvY4vxZGHzZR8k5QKM1mGXXV0sc2N1HejQ=",
+  "Source": "reactCrudBackend",
+  "BasePath": "_content/reactCrudBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
