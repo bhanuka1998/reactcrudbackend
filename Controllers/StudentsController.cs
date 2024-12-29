@@ -66,5 +66,110 @@ namespace reactCrudBackend.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        // PUT: api/students/update-student/{id}
+        [HttpPut("update-student/{id}")]
+        public async Task<IActionResult> UpdateStudent(int id, [FromBody] Student updatedStudent)
+        {
+            if (id != updatedStudent.StudentId)
+            {
+                return BadRequest("Student ID mismatch.");
+            }
+
+            if (updatedStudent == null)
+            {
+                return BadRequest("Updated student data is null.");
+            }
+
+            try
+            {
+                var existingStudent = await _context.Students.FindAsync(id);
+
+                if (existingStudent == null)
+                {
+                    return NotFound($"Student with ID {id} not found.");
+                }
+
+                // Update the fields of the existing student
+                existingStudent.StudentName = updatedStudent.StudentName;
+                existingStudent.StudentEmail = updatedStudent.StudentEmail;
+
+                _context.Entry(existingStudent).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+
+                return Ok(existingStudent);
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return StatusCode(500, $"Concurrency error: {ex.Message}");
+            }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, $"Database error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // GET: api/students/{studentId}
+        [HttpGet("get-student-from-id/{studentId}")]
+        public async Task<IActionResult> GetStudentById(int studentId)
+        {
+            try
+            {
+                var student = await _context.Students
+                                            .FirstOrDefaultAsync(s => s.StudentId == studentId);
+
+                if (student == null)
+                {
+                    return NotFound($"Student with ID {studentId} not found.");
+                }
+
+                return Ok(student);
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log the exception (e.g., using a logging framework like Serilog)
+                return StatusCode(500, $"Database error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // DELETE: api/students/delete-student/{id}
+        [HttpDelete("delete-student/{studentToDelete}")]
+        public async Task<IActionResult> DeleteStudent(int studentToDelete)
+        {
+            try
+            {
+                var student = await _context.Students.FindAsync(studentToDelete);
+
+                if (student == null)
+                {
+                    return NotFound($"Student with ID {studentToDelete} not found.");
+                }
+
+                _context.Students.Remove(student);
+                await _context.SaveChangesAsync();
+
+                return NoContent(); // 204 No Content response indicating successful deletion
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log the exception
+                return StatusCode(500, $"Database error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
     }
 }
