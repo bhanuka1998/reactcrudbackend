@@ -120,3 +120,4 @@ D:\.NetBasics\reactCrudBackend\reactCrudBackend\obj\Debug\net8.0\reactCrudBacken
 D:\.NetBasics\reactCrudBackend\reactCrudBackend\obj\Debug\net8.0\reactCrudBackend.genruntimeconfig.cache
 D:\.NetBasics\reactCrudBackend\reactCrudBackend\obj\Debug\net8.0\ref\reactCrudBackend.dll
 D:\.NetBasics\reactCrudBackend\reactCrudBackend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\.NetBasics\reactCrudBackend\reactCrudBackend\obj\Debug\net8.0\reactCrudBackend.sourcelink.json

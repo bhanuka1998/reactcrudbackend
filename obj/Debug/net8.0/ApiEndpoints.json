@@ -17,6 +17,38 @@
   },
   {
     "ContainingType": "reactCrudBackend.Controllers.StudentsController",
+    "Method": "DeleteStudent",
+    "RelativePath": "api/Students/delete-student/{studentToDelete}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "studentToDelete",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "reactCrudBackend.Controllers.StudentsController",
+    "Method": "GetStudentById",
+    "RelativePath": "api/Students/get-student-from-id/{studentId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "studentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "reactCrudBackend.Controllers.StudentsController",
     "Method": "GetStudentList",
     "RelativePath": "api/Students/students-list",
     "HttpMethod": "GET",
@@ -26,24 +58,24 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "reactCrudBackend.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
+    "ContainingType": "reactCrudBackend.Controllers.StudentsController",
+    "Method": "UpdateStudent",
+    "RelativePath": "api/Students/update-student/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
+    "Parameters": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[reactCrudBackend.WeatherForecast, reactCrudBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedStudent",
+        "Type": "reactCrudBackend.Models.Student",
+        "IsRequired": true
       }
     ],
-    "EndpointName": "GetWeatherForecast"
+    "ReturnTypes": []
   }
 ]
